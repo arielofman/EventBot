@@ -17,7 +17,7 @@ for(const file of commandFiles) {
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity("Developed by Zann"); 
+    client.user.setActivity("!help"); 
 }); 
 
 client.on('message', message => {
