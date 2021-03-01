@@ -16,16 +16,19 @@ for(const file of commandFiles) {
 }
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity("!help"); 
+    console.log(`Logged in as ${client.user.tag}!`); 
+    client.user.setActivity('!help', { type: 'WATCHING' });
 }); 
 
 client.on('message', message => {
   if(!message.content.startsWith(prefix) || message.author.bot) return;
  
- 
   let args = message.content.slice(prefix.length).trim().split(/("[^"]+")|\ +/g).filter(msg => msg);
-  const command = args.shift().toLowerCase();
+  
+  let command = args.shift();
+  if(typeof(command) === "string") { 
+    command = command.toLowerCase();
+  }
  
   if (command === 'help') { 
     client.commands.get('help').execute(message, args, client);
